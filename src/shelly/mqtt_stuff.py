@@ -35,7 +35,6 @@ topics = [
     'shellies/shellydimmer2-EC64C9C2EFE2/input/1',
 ]
 
-topics = [f'{parent_topic}/{sub_topic}' for sub_topic in sub_topics]
 
 def print_user_data(client, userdata):
     print(f'Userdata: {userdata}')

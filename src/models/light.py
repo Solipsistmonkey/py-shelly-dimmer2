@@ -1,6 +1,38 @@
+"""
+Light Status Model.
+
+This module defines the `LightStatus` model, representing the status of a light in the Shelly device.
+"""
+
 from pydantic import BaseModel, Field
 
+
 class LightStatus(BaseModel):
+    """
+    A model representing the status of a light.
+
+    Attributes
+    ----------
+    is_on : bool
+        Whether the light is on or off.
+    source : str
+        The source of the light (e.g., cloud, http).
+    has_timer : bool
+        Whether the light has a timer.
+    timer_started : int
+        The time the timer started.
+    timer_duration : int
+        The duration of the timer.
+    timer_remaining : int
+        The remaining time on the timer.
+    mode : str
+        The mode of the light (default is "white").
+    brightness : int
+        The brightness of the light in percent.
+    transition : int
+        The transition time in milliseconds.
+    """
+
     is_on: bool = Field(
         ...,
         description="Whether the light is on or off",
@@ -33,8 +65,8 @@ class LightStatus(BaseModel):
         repr=False,
     )
     mode: str = Field(
-        "white"
-        , description="The mode of the light",
+        "white",
+        description="The mode of the light",
         repr=False,
     )
     brightness: int = Field(
@@ -47,5 +79,3 @@ class LightStatus(BaseModel):
         description="The transition time in milliseconds",
         repr=True,
     )
-
-

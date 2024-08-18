@@ -1,7 +1,13 @@
+"""
+Status Models.
+
+This module defines the `Status` model, representing the overall status of
+a Shelly device, including WiFi, cloud, MQTT, lights, meters, inputs,
+temperature, and more.
+"""
+
 from typing import List
 from pydantic import BaseModel, Field
-
-from models import status
 from models.light import LightStatus
 from models.status.inputs import InputStatus
 from models.status.meter import MeterStatus
@@ -11,8 +17,72 @@ from models.status.update import UpdateStatus
 from models.status.wifi_status import WifiStatus
 from models.status.cloud import CloudStatus
 
-
 class Status(BaseModel):
+    """
+    A model representing the overall status of a Shelly device.
+
+    Attributes
+    ----------
+    wifi_status : WifiStatus
+        The current Wi-Fi connection status.
+    cloud : CloudStatus
+        The current cloud connection status.
+    mqtt : MQTTStatus
+        The current MQTT connection status.
+    time : str
+        The current time.
+    unix_time : int
+        The current time in unixtime.
+    serial : int
+        The cloud serial number of the device.
+    has_update : bool
+        Whether the device has an update available.
+    mac : str
+        The MAC address of the device.
+    config_change_count : int
+        The number of configuration changes.
+    actions_stats : dict
+        The statistics of actions.
+    lights : List[LightStatus]
+        The status of the lights.
+    meters : List[MeterStatus]
+        The status of the meters.
+    inputs : List[InputStatus]
+        The status of the inputs.
+    temperature : TempStatus
+        The temperature status.
+    calibrated : bool
+        Whether the calibration is done.
+    calibration_progress : int
+        The calibration progress in percent.
+    calibration_running : bool
+        Whether the calibration is running.
+    wire_mode : int
+        The wire mode (0: LO mode, 1: LN mode).
+    forced_neutral : bool
+        Forced neutral flag.
+    over_temperature : bool
+        Whether an overtemperature condition has occurred.
+    load_error : int
+        The load error.
+    over_power : bool
+        Whether an over power condition has occurred.
+    debug : int
+        Whether debug mode is enabled.
+    update : UpdateStatus
+        The update status.
+    ram_total : int
+        The total RAM.
+    ram_free : int
+        The free RAM.
+    fs_size : int
+        The filesystem size.
+    fs_free : int
+        The free filesystem space.
+    uptime : int
+        The uptime in seconds.
+    """
+
     wifi_status: WifiStatus = Field(
         ...,
         description="The current WiFi connection status",
