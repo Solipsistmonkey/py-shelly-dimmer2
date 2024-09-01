@@ -11,7 +11,6 @@ This repository contains Python modules and scripts for controlling and monitori
   - [Models Overview](#models-overview)
   - [Running the Dimmer2 Controller](#running-the-dimmer2-controller)
 - [Configuration](#configuration)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Introduction
